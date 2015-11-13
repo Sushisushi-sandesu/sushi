@@ -4,8 +4,7 @@ using System.Collections;
 
 public class CameraSceneController : MonoBehaviour {
 
-
-//	public OVRCameraRig currentCameraRig;
+	
 	private Canvas canvas;
 
 	private const float DISTANCE_TO_CAMERA = 300.0f;

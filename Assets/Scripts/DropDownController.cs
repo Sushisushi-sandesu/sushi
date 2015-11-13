@@ -22,15 +22,14 @@ public class DropDownController : MonoBehaviour {
 
 	void OnGUI() {
 		Event e = Event.current;
-		if (e.type == EventType.KeyDown) {
-//			if (isShown) {
-//				dropDown.Hide ();
-//			} else {
-//				dropDown.Show ();
-//			}
-//			isShown = !isShown;
-			Application.CaptureScreenshot("/Users/nate/Screenshot.png");
-			Debug.Log ("Screenshot");
+		if (e.keyCode == KeyCode.D) {
+			if (isShown) {
+				dropDown.Hide ();
+			} else {
+				dropDown.Show ();
+			}
+			isShown = !isShown;
+
 		}
 	}
 
