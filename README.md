@@ -1,9 +1,8 @@
 # UnityWebCamSample
 
+
 How to use the code
-
 ======
-
 1. Download the code from this repository. (git clone)
 2. Open Unity. In the welcome window, click "Open".
 3. Switch to the root directory of the downloaded files, then click "Open".
