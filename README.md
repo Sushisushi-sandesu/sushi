@@ -1,4 +1,4 @@
-# UnityWebCamSample
+# UnityWebCamSample (Deprecated)
 
 
 How to use the code
