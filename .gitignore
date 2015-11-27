@@ -32,6 +32,9 @@ sysinfo.txt
 Icon?
 ehthumbs.db
 [Tt]humbs.db
-=======
-Temp/
-.DS_Store
+
+*.meta
+Assets/LeapMotion
+Assets/LeapMotion+OVR
+Assets/OVR
+
