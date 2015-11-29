@@ -1,4 +1,4 @@
-# UnityWebCamSample (Updated)
+# Sushi
 
 ##How to use the code
 
