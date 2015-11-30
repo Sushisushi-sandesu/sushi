@@ -16,11 +16,13 @@
 
 ### 2. Prepare to hack this repository
 
-1. Clone this repository
-  ```
-  $ git clone git@github.com:Sushisushi-sandesu/sushi.git
-  $ cd sushi
-  ```
+Clone this repository:
+
+```
+$ git clone git@github.com:Sushisushi-sandesu/sushi.git
+$ cd sushi
+```
+
 6. Open Unity. At the welcome window, click **"Open Other"**.
 7. Switch to the cloned projects directory, then click **"open"**.
 8. Now, since the Leap Motion's assets are excluded from the repo, we need to download the assets. Go to **"Asset Store"**, search for **"Leap Motion Core Assets"**, then click **"import"**. When asked to update the APIs, click **"I made a backup. Go ahead"**.
