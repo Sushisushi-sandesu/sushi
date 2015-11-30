@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Sushisushi-sandesu/sushi.png?label=ready&title=Ready)](https://waffle.io/Sushisushi-sandesu/sushi)
 # Sushi
 
 ##How to use the code
