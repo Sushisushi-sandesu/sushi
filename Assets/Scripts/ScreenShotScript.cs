@@ -21,26 +21,7 @@ public class ScreenShotScript : MonoBehaviour {
 	void Update () {
 		
 	}
-	
-	void TakeScreenShot (string path) {
-		StartCoroutine (CaptureScreen (path));
-	}
-	
-	IEnumerator CaptureScreen (string path) {
-		// Wait till the last possible moment before screen rendering to hide the UI
-		yield return null;
-//		GameObject.Find("UICanvas").GetComponent<Canvas>().enabled = false;
-		
-		// Wait for screen rendering to complete
-		yield return new WaitForEndOfFrame();
-		
-		// Take screenshot
-		Application.CaptureScreenshot(path);
-		
-		// Show UI after we're done
-//		GameObject.Find("UICanvas").GetComponent<Canvas>().enabled = true;
-	}
-	
+
 	void OnGUI () {
 		Event e = Event.current;
 		
@@ -55,12 +36,27 @@ public class ScreenShotScript : MonoBehaviour {
 			
 		}
 	}
-	
+
 	void LateUpdate () {
 		StartCoroutine (DisplayScreenShot ());
 	}
 	
-	IEnumerator DisplayScreenShot () {
+	private void TakeScreenShot (string path) {
+		StartCoroutine (CaptureScreen (path));
+	}
+	
+	private IEnumerator CaptureScreen (string path) {
+		// Wait till the last possible moment before screen rendering to hide the UI
+		yield return null;
+		
+		// Wait for screen rendering to complete
+		yield return new WaitForEndOfFrame();
+		
+		// Take screenshot
+		Application.CaptureScreenshot(path);
+	}
+
+	private IEnumerator DisplayScreenShot () {
 		yield return null;
 		
 		if (System.IO.File.Exists(lastScreenShotPath)) {
