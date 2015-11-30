@@ -34,9 +34,11 @@ ehthumbs.db
 [Tt]humbs.db
 
 *.meta
+Assets/Gizmos
 Assets/LeapMotion
 Assets/LeapMotion+OVR
 Assets/OVR
+Assets/Plugins
 
 # vim
 *~
