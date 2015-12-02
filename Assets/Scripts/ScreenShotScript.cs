@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor;
 using System.Collections;
 
 public class ScreenShotScript : MonoBehaviour
@@ -30,7 +29,7 @@ public class ScreenShotScript : MonoBehaviour
 		
 		if (e.type == EventType.KeyDown && e.keyCode == KeyCode.F) {
 			string current_time = System.DateTime.Now.ToString ().Replace ("/", "_").Replace (":", "_");
-			lastScreenShotPath = FileUtil.GetUniqueTempPathInProject () + current_time + ".png";
+			lastScreenShotPath = Application.temporaryCachePath + "/" + current_time + ".png";
 			Debug.Log ("saved: " + lastScreenShotPath);
 			TakeScreenShot (lastScreenShotPath);
 			
