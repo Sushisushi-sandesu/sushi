@@ -5,7 +5,7 @@ using System.Collections;
 public class ScreenShotScript : MonoBehaviour
 {
 
-	public AudioSource audio;
+	public AudioSource shutterAudio;
 	public RawImage screenShot;
 	private Texture2D screenShotTexture;
 	private string lastScreenShotPath;
@@ -30,11 +30,9 @@ public class ScreenShotScript : MonoBehaviour
 		if (e.type == EventType.KeyDown && e.keyCode == KeyCode.F) {
 			string current_time = System.DateTime.Now.ToString ().Replace ("/", "_").Replace (":", "_");
 			lastScreenShotPath = Application.temporaryCachePath + "/" + current_time + ".png";
-			Debug.Log ("saved: " + lastScreenShotPath);
-			TakeScreenShot (lastScreenShotPath);
-			
-			audio.Play ();
-			Debug.Log ("Screenshot");
+			Debug.Log ("Screenshot saved: " + lastScreenShotPath);
+			TakeScreenShot (lastScreenShotPath);	
+			shutterAudio.Play ();
 		}
 	}
 
@@ -65,7 +63,7 @@ public class ScreenShotScript : MonoBehaviour
 		yield return null;
 		
 		if (System.IO.File.Exists (lastScreenShotPath)) {
-			Debug.Log ("File found!");
+			Debug.Log ("Last screenshot found!");
 			var screenShotBytes = System.IO.File.ReadAllBytes (lastScreenShotPath);
 			screenShotTexture.LoadImage (screenShotBytes);
 			screenShot.material.mainTexture = screenShotTexture;

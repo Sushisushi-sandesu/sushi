@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae231a950bd349ba978d2b63ffc82c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 1001552816}
+  shutterAudio: {fileID: 1001552816}
   screenShot: {fileID: 614197767}
 --- !u!114 &614197767
 MonoBehaviour:
@@ -287,7 +287,7 @@ GameObject:
   - 4: {fileID: 1001552817}
   - 82: {fileID: 1001552816}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: ScreenShotShutterAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -369,11 +369,22 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1001552815}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 19, z: 159}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1 &1074163266 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 120736, guid: 3ec5dd60dda4e49ba89053ede7744b29, type: 2}
+  m_PrefabInternal: {fileID: 460777660}
+--- !u!81 &1074163271
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1074163266}
+  m_Enabled: 1
 --- !u!1 &1243471458
 GameObject:
   m_ObjectHideFlags: 0
