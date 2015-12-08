@@ -32,6 +32,6 @@ Note that you must add the **[WIP]** prefix for the title of pull request until 
 
 ## 3. Closing Issues
 
-When the **[WIP]** prefix is removed and the ***ready to review*** tag is set, the pull request is ready to merge.
+When the **[WIP]** prefix is removed and the ***ready for review*** tag is set, the pull request is ready to merge.
 
 At least "2" reviewers must accept and comment to the pull request before any merging. You should repeatedly update your implementation based on their review comments.
