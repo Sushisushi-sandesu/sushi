@@ -5,7 +5,7 @@ Thank you for your contribution.
 
 ## Coding Style
 
-You should use [Mono Style](http://www.mono-project.com/community/contributing/coding-guidelines/) in this project.
+Our coding style follows [Coding Guidelines of Mono](http://www.mono-project.com/community/contributing/coding-guidelines/) in this project.
 
 ## Development Flow
 
