@@ -3,7 +3,7 @@ using System;
 
 namespace Recognizer
 {
-	interface RecognizerInterface
+	public interface RecognizerInterface
 	{
 		void invokeIfRecognized(Frame frame);
 	}
