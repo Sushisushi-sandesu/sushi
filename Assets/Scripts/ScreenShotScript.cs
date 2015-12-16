@@ -12,8 +12,8 @@ public class ScreenShotScript : MonoBehaviour
 	private Texture2D screenShotTexture;
 	private string lastScreenShotPath;
 
-	private PieceRecognizer pr; 
-	
+	private PieceRecognizer pr;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -24,7 +24,7 @@ public class ScreenShotScript : MonoBehaviour
 			return true;
 		});
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
@@ -40,7 +40,7 @@ public class ScreenShotScript : MonoBehaviour
 	{
 		StartCoroutine (DisplayScreenShot ());
 	}
-	
+
 	private void TakeScreenShot ()
 	{
 		string current_time = System.DateTime.Now.ToString ().Replace ("/", "_").Replace (":", "_");
@@ -49,15 +49,15 @@ public class ScreenShotScript : MonoBehaviour
 		StartCoroutine (CaptureScreen (lastScreenShotPath));
 		shutterAudio.Play ();
 	}
-	
+
 	private IEnumerator CaptureScreen (string path)
 	{
 		// Wait till the last possible moment before screen rendering to hide the UI
 		yield return null;
-		
+
 		// Wait for screen rendering to complete
 		yield return new WaitForEndOfFrame ();
-		
+
 		// Take screenshot
 		Application.CaptureScreenshot (path);
 	}
@@ -65,7 +65,7 @@ public class ScreenShotScript : MonoBehaviour
 	private IEnumerator DisplayScreenShot ()
 	{
 		yield return null;
-		
+
 		if (System.IO.File.Exists (lastScreenShotPath)) {
 			Debug.Log ("Last screenshot found!");
 			var screenShotBytes = System.IO.File.ReadAllBytes (lastScreenShotPath);

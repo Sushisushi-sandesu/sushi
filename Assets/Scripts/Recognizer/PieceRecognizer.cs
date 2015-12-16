@@ -13,8 +13,8 @@ namespace Recognizer
 		public PieceRecognizer(Func<bool> e) {
 			this.e = e;
 		}
-					
-		public void invokeIfRecognized(Frame frame) 
+
+		public void invokeIfRecognized(Frame frame)
 		{
 			addDeltaTime ();
 
@@ -23,34 +23,33 @@ namespace Recognizer
 				invoke (frame);
 			}
 		}
-		
-		private bool isRecognized(Frame frame) 
+
+		private bool isRecognized(Frame frame)
 		{
-			FingerList fingers = frame.Fingers;			
+			FingerList fingers = frame.Fingers;
 			FingerList ff = fingers.Extended ();
 
 			if (ff.Count == 2) {
-				if ((ff[0].Type () == Finger.FingerType.TYPE_INDEX && ff[1].Type () == Finger.FingerType.TYPE_MIDDLE) || 
+				if ((ff[0].Type () == Finger.FingerType.TYPE_INDEX && ff[1].Type () == Finger.FingerType.TYPE_MIDDLE) ||
 				    (ff[1].Type () == Finger.FingerType.TYPE_INDEX && ff[0].Type () == Finger.FingerType.TYPE_MIDDLE)) {
 					Debug.Log("Piece recognized");
 					return true;
 				}
-			}	
+			}
 			return false;
 		}
 
 		private void resetTotalTime()  {
-			totalTime = 0.0f;	
+			totalTime = 0.0f;
 		}
 
 		private void addDeltaTime() {
 			totalTime += Time.deltaTime;
 		}
 
-		private void invoke(Frame frame) 
+		private void invoke(Frame frame)
 		{
 			e ();
 		}
 	}
 }
-
