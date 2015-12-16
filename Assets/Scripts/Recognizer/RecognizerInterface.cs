@@ -5,6 +5,6 @@ namespace Recognizer
 {
 	public interface RecognizerInterface
 	{
-		void invokeIfRecognized(Frame frame);
+		void InvokeIfRecognized(Frame frame);
 	}
 }

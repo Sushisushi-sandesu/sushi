@@ -13,6 +13,7 @@ public class ScreenShotScript : MonoBehaviour
 	private string lastScreenShotPath;
 
 	private PeaceRecognizer pr;
+	private PhoneHandleRecognizer phr;
 
 	// Use this for initialization
 	void Start ()
@@ -20,6 +21,7 @@ public class ScreenShotScript : MonoBehaviour
 		screenShotTexture = new Texture2D (100, 100);
 		screenShot.texture = screenShotTexture;
 		pr = new PeaceRecognizer (TakeScreenShot);
+		//phr = new PhoneHandleRecognizer (TakeScreenShot);
 	}
 
 	// Update is called once per frame
@@ -30,7 +32,8 @@ public class ScreenShotScript : MonoBehaviour
 	void OnGUI ()
 	{
 		Frame frame = controller.Frame ();
-		pr.invokeIfRecognized (frame);
+		pr.InvokeIfRecognized (frame);
+		//phr.InvokeIfRecognized (frame);
 	}
 
 	void LateUpdate ()

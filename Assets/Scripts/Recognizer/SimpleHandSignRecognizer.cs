@@ -10,31 +10,31 @@ namespace Recognizer
 		private float totalTime = 3.0f; // To invoke at first
 		private Action e;
 
-		public abstract bool isRecognized (Frame frame);
+		public abstract bool IsRecognized (Frame frame);
 
 		public SimpleHandSignRecognizer(Action e) {
 			this.e = e;
 		}
 
-		public void invokeIfRecognized(Frame frame)
+		public void InvokeIfRecognized(Frame frame)
 		{
-			addDeltaTime ();
+			AddDeltaTime ();
 
-			if (totalTime > nextDuration && isRecognized (frame)) {
-				resetTotalTime();
-				invoke (frame);
+			if (totalTime > nextDuration && IsRecognized (frame)) {
+				ResetTotalTime();
+				Invoke (frame);
 			}
 		}
 
-		private void resetTotalTime()  {
+		private void ResetTotalTime()  {
 			totalTime = 0.0f;
 		}
 
-		private void addDeltaTime() {
+		private void AddDeltaTime() {
 			totalTime += Time.deltaTime;
 		}
 
-		private void invoke(Frame frame)
+		private void Invoke(Frame frame)
 		{
 			e ();
 		}

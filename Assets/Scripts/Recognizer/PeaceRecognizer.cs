@@ -11,7 +11,7 @@ namespace Recognizer
 			// noop
 		}
 
-		public override bool isRecognized (Frame frame)
+		public override bool IsRecognized (Frame frame)
 		{
 			FingerList fingers = frame.Fingers;
 			FingerList ff = fingers.Extended ();
