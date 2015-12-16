@@ -6,16 +6,21 @@ namespace Recognizer
 {
 	public class PieceRecognizer : RecognizerInterface
 	{
-		const float next_duration = 3.0f;
+		const float nextDuration = 3.0f;
 		private float totalTime = 3.0f; // To invoke at first
+		private Func<bool> e;
+
+		public PieceRecognizer(Func<bool> e) {
+			this.e = e;
+		}
 					
-		public void invokeIfRecognized(Frame frame, Func<bool> e) 
+		public void invokeIfRecognized(Frame frame) 
 		{
 			addDeltaTime ();
 
-			if (totalTime > next_duration && isRecognized (frame)) {
+			if (totalTime > nextDuration && isRecognized (frame)) {
 				resetTotalTime();
-				invoke (frame, e);
+				invoke (frame);
 			}
 		}
 		
@@ -42,7 +47,7 @@ namespace Recognizer
 			totalTime += Time.deltaTime;
 		}
 
-		private void invoke(Frame frame, Func<bool> e) 
+		private void invoke(Frame frame) 
 		{
 			e ();
 		}
