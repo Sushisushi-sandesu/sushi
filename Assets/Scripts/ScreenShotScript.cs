@@ -64,7 +64,6 @@ public class ScreenShotScript : MonoBehaviour
 		yield return null;
 		
 		if (System.IO.File.Exists (lastScreenShotPath)) {
-			Debug.Log ("Last screenshot found!");
 			var screenShotBytes = System.IO.File.ReadAllBytes (lastScreenShotPath);
 			screenShotTexture.LoadImage (screenShotBytes);
 			screenShot.material.mainTexture = screenShotTexture;
