@@ -4,27 +4,14 @@ using Leap;
 
 namespace Recognizer
 {
-	public class PeaceRecognizer : RecognizerInterface
+	public class PeaceRecognizer : SimpleHandSignRecognizer
 	{
-		const float nextDuration = 3.0f;
-		private float totalTime = 3.0f; // To invoke at first
-		private Action e;
-
-		public PeaceRecognizer(Action e) {
-			this.e = e;
-		}
-
-		public void invokeIfRecognized(Frame frame)
+		public PeaceRecognizer (Action e) : base(e)
 		{
-			addDeltaTime ();
-
-			if (totalTime > nextDuration && isRecognized (frame)) {
-				resetTotalTime();
-				invoke (frame);
-			}
+			// noop
 		}
 
-		private bool isRecognized(Frame frame)
+		public override bool IsRecognized (Frame frame)
 		{
 			FingerList fingers = frame.Fingers;
 			FingerList ff = fingers.Extended ();
@@ -37,19 +24,6 @@ namespace Recognizer
 				}
 			}
 			return false;
-		}
-
-		private void resetTotalTime()  {
-			totalTime = 0.0f;
-		}
-
-		private void addDeltaTime() {
-			totalTime += Time.deltaTime;
-		}
-
-		private void invoke(Frame frame)
-		{
-			e ();
 		}
 	}
 }
