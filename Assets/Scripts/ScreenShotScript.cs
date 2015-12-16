@@ -12,14 +12,14 @@ public class ScreenShotScript : MonoBehaviour
 	private Texture2D screenShotTexture;
 	private string lastScreenShotPath;
 
-	private PieceRecognizer pr;
+	private PeaceRecognizer pr;
 
 	// Use this for initialization
 	void Start ()
 	{
 		screenShotTexture = new Texture2D (100, 100);
 		screenShot.texture = screenShotTexture;
-		pr = new PieceRecognizer (TakeScreenShot);
+		pr = new PeaceRecognizer (TakeScreenShot);
 	}
 
 	// Update is called once per frame

@@ -4,13 +4,13 @@ using Leap;
 
 namespace Recognizer
 {
-	public class PieceRecognizer : RecognizerInterface
+	public class PeaceRecognizer : RecognizerInterface
 	{
 		const float nextDuration = 3.0f;
 		private float totalTime = 3.0f; // To invoke at first
 		private Action e;
 
-		public PieceRecognizer(Action e) {
+		public PeaceRecognizer(Action e) {
 			this.e = e;
 		}
 
