@@ -14,6 +14,7 @@ public class ScreenShotScript : MonoBehaviour
 
 	private PeaceRecognizer pr;
 	private PhoneHandleRecognizer phr;
+	private OkRecognizer ok;
 
 	private HorizontalSwipeRecognizer hsr;
 	private VerticalSwipeRecognizer vsr;
@@ -24,6 +25,7 @@ public class ScreenShotScript : MonoBehaviour
 		screenShotTexture = new Texture2D (100, 100);
 		screenShot.texture = screenShotTexture;
 		pr = new PeaceRecognizer (TakeScreenShot);
+		ok = new OkRecognizer (() => { Debug.Log("recognized ok"); TakeScreenShot(); });
 		//phr = new PhoneHandleRecognizer (TakeScreenShot);
 
 		controller.EnableGesture (Gesture.GestureType.TYPE_SWIPE);
@@ -40,6 +42,7 @@ public class ScreenShotScript : MonoBehaviour
 	{
 		Frame frame = controller.Frame ();
 		pr.InvokeIfRecognized (frame);
+		ok.InvokeIfRecognized (frame);
 		//phr.InvokeIfRecognized (frame);
 		hsr.InvokeIfRecognized (frame);
 		vsr.InvokeIfRecognized (frame);
