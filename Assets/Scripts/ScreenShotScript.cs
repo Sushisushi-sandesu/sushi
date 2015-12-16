@@ -28,8 +28,9 @@ public class ScreenShotScript : MonoBehaviour
 		Event e = Event.current;
 		
 		if (e.type == EventType.KeyDown && e.keyCode == KeyCode.F) {
-			string current_time = System.DateTime.Now.ToString ().Replace ("/", "_").Replace (":", "_");
-			lastScreenShotPath = Application.temporaryCachePath + "/" + current_time + ".png";
+			//string current_time = System.DateTime.Now.ToString ().Replace ("/", "_").Replace (":", "_");
+			//lastScreenShotPath = Application.temporaryCachePath + "/" + current_time + ".png";
+			lastScreenShotPath = Application.temporaryCachePath + "/photo.png";
 			Debug.Log ("Screenshot saved: " + lastScreenShotPath);
 			TakeScreenShot (lastScreenShotPath);	
 			shutterAudio.Play ();
