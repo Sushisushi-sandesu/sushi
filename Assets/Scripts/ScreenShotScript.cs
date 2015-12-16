@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Leap;
+using Recognizer;
 
 public class ScreenShotScript : MonoBehaviour
 {
-
+	Controller controller = new Controller();
 	public AudioSource shutterAudio;
 	public RawImage screenShot;
 	private Texture2D screenShotTexture;
 	private string lastScreenShotPath;
+
+	private PieceRecognizer pr = new PieceRecognizer();
 	
 	// Use this for initialization
 	void Start ()
@@ -20,20 +24,15 @@ public class ScreenShotScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		
 	}
 
 	void OnGUI ()
 	{
-		Event e = Event.current;
-		
-		if (e.type == EventType.KeyDown && e.keyCode == KeyCode.F) {
-			string current_time = System.DateTime.Now.ToString ().Replace ("/", "_").Replace (":", "_");
-			lastScreenShotPath = Application.temporaryCachePath + "/" + current_time + ".png";
-			Debug.Log ("Screenshot saved: " + lastScreenShotPath);
-			TakeScreenShot (lastScreenShotPath);	
-			shutterAudio.Play ();
-		}
+		Frame frame = controller.Frame ();
+		pr.invokeIfRecognized (frame, () => {
+			TakeScreenShot ();
+			return true;
+		});
 	}
 
 	void LateUpdate ()
@@ -41,9 +40,13 @@ public class ScreenShotScript : MonoBehaviour
 		StartCoroutine (DisplayScreenShot ());
 	}
 	
-	private void TakeScreenShot (string path)
+	private void TakeScreenShot ()
 	{
-		StartCoroutine (CaptureScreen (path));
+		string current_time = System.DateTime.Now.ToString ().Replace ("/", "_").Replace (":", "_");
+		lastScreenShotPath = Application.temporaryCachePath + "/" + current_time + ".png";
+		Debug.Log ("Screenshot saved: " + lastScreenShotPath);
+		StartCoroutine (CaptureScreen (lastScreenShotPath));
+		shutterAudio.Play ();
 	}
 	
 	private IEnumerator CaptureScreen (string path)
