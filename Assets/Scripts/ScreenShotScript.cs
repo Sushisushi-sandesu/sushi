@@ -14,6 +14,7 @@ public class ScreenShotScript : MonoBehaviour
 
 	private PeaceRecognizer pr;
 	private PhoneHandleRecognizer phr;
+	private OkRecognizer ok;
 
 	// Use this for initialization
 	void Start ()
@@ -21,6 +22,7 @@ public class ScreenShotScript : MonoBehaviour
 		screenShotTexture = new Texture2D (100, 100);
 		screenShot.texture = screenShotTexture;
 		pr = new PeaceRecognizer (TakeScreenShot);
+		ok = new OkRecognizer (() => { Debug.Log("recognized ok"); TakeScreenShot(); });
 		//phr = new PhoneHandleRecognizer (TakeScreenShot);
 	}
 
@@ -33,6 +35,7 @@ public class ScreenShotScript : MonoBehaviour
 	{
 		Frame frame = controller.Frame ();
 		pr.InvokeIfRecognized (frame);
+		ok.InvokeIfRecognized (frame);
 		//phr.InvokeIfRecognized (frame);
 	}
 
