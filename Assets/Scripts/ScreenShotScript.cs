@@ -19,10 +19,7 @@ public class ScreenShotScript : MonoBehaviour
 	{
 		screenShotTexture = new Texture2D (100, 100);
 		screenShot.texture = screenShotTexture;
-		pr = new PieceRecognizer(() => {
-			TakeScreenShot ();
-			return true;
-		});
+		pr = new PieceRecognizer (TakeScreenShot);
 	}
 
 	// Update is called once per frame

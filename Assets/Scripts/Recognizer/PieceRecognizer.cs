@@ -8,9 +8,9 @@ namespace Recognizer
 	{
 		const float nextDuration = 3.0f;
 		private float totalTime = 3.0f; // To invoke at first
-		private Func<bool> e;
+		private Action e;
 
-		public PieceRecognizer(Func<bool> e) {
+		public PieceRecognizer(Action e) {
 			this.e = e;
 		}
 
