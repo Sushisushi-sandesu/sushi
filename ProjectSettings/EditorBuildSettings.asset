@@ -7,3 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/LeapMotion+OVR/Scenes/ImageHandsTouchCubes.unity
+  - enabled: 1
+    path: Assets/_Scenes/MainScene.unity
+  - enabled: 1
+    path: Assets/_Scenes/CameraScene.unity
