@@ -17,12 +17,9 @@ namespace Recognizer
 			foreach (var hand in frame.Hands)
 			{
 				Finger thumb = FindFingerByType (hand.Fingers, Finger.FingerType.TYPE_THUMB);
-				if (thumb == null) continue;
-				foreach (var finger in hand.Fingers)
-				{
-					if (finger.Type () == Finger.FingerType.TYPE_THUMB) continue;
-					if (IsNear (thumb, finger)) return true;
-				}
+				Finger index = FindFingerByType(hand.Fingers, Finger.FingerType.TYPE_INDEX);
+				if (thumb == null || index == null) continue;
+				if (IsNear(thumb, index)) return true;
 			}
 			return false;
 		}
