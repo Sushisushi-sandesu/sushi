@@ -880,7 +880,8 @@ Prefab:
       propertyPath: pictureL
       value: 
       objectReference: {fileID: 519960592}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11483406, guid: 3ec5dd60dda4e49ba89053ede7744b29, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3ec5dd60dda4e49ba89053ede7744b29, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1406027227 stripped
