@@ -55,41 +55,40 @@ public class MainMenu : MonoBehaviour {
 		listener.Start();
 	}
 	void disableSpace(){
-		System.Threading.Thread.Sleep (200);
+		Thread.Sleep (200);
 		spaceEnable = true;
 	}
 	void showImages () {
-		if (spaceEnable) {
-			spaceEnable = false;
-			Thread exeOnce = new Thread (disableSpace);
-			exeOnce.Start ();
-		} else {
-			return;
-		}
 		if(messages.Count > 0){
 			message last = messages.Peek();
 			int gazou = last.gazou;
 			pictureL.sprite = Resources.Load <Sprite>(selectGazou(gazou));
 			pictureR.sprite = Resources.Load <Sprite>(selectGazou(gazou));
-			pictureL.enabled = linemode;
-			pictureR.enabled = linemode;
 		}
+		pictureL.enabled = linemode;
+		pictureR.enabled = linemode;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		Leap.Frame frame = controller.Frame ();
 		tsr.InvokeIfRecognized (frame);
-
-		if (Input.GetKey(KeyCode.Space)) {
-			linemode = !linemode;
+	
+		if (Input.GetKey(KeyCode.D)) {
+			if (spaceEnable) {
+				linemode = !linemode;
+				spaceEnable = false;
+				Thread exeOnce = new Thread (disableSpace);
+				exeOnce.Start ();
+				Debug.Log (linemode);
+			}
+			Debug.Log ("press D!!");
 		} else if (Input.GetKey(KeyCode.A)){
 			message t = new message();
 			t.gazou = UnityEngine.Random.Range (0, 4);
 			t.you   = true;
 			messages.Push(t);
-		}
-		if (Input.GetKeyDown(KeyCode.S)) {
+		} else if (Input.GetKeyDown(KeyCode.S)) {
 			if(messages.Count > 0){
 				message last = messages.Peek();
 				sendMessage(last);
