@@ -8,14 +8,17 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using UnityEngine.UI;
+using Leap;
+using Recognizer;
 
 public class MainMenu : MonoBehaviour {
 	public UnityEngine.UI.Image[] picturesR;
 	public UnityEngine.UI.Image[] picturesL;
+	private SushiRecognizer sushi;
 
 	TcpListener list;
-	IPAddress localAddr = IPAddress.Parse("157.82.5.153");
-	string remoteAddr = "157.82.7.85";
+	IPAddress localAddr = IPAddress.Parse("157.82.7.142");
+	string remoteAddr = "157.82.5.153";
 	int port1 = 5000;
 	int port2 = 5000;
 	
@@ -52,6 +55,8 @@ public class MainMenu : MonoBehaviour {
 	void Start () {
 		tsr = new ThumbsUpRecognizer(() => { Application.LoadLevel ("CameraScene"); });
 		messages = new System.Collections.ArrayList(){};
+
+		sushi = new SushiRecognizer (SendSticker);
 
 		list = new TcpListener(localAddr,port1);
 		list.Start();
@@ -118,6 +123,8 @@ public class MainMenu : MonoBehaviour {
 		Leap.Frame frame = controller.Frame ();
 		tsr.InvokeIfRecognized (frame);
 
+		sushi.InvokeIfRecognized (frame);
+
 		if (Input.GetKey(KeyCode.Space)) {
 			if (spaceEnable) {
 				Debug.Log("press key Space");
@@ -140,10 +147,14 @@ public class MainMenu : MonoBehaviour {
 				showImages();
 			}
 		} else if (Input.GetKeyDown(KeyCode.S)) {
-			if(messages.Count > 0){
-				message last = (message)messages[0];
-				sendMessage(last);
-			}
+			SendSticker ();
+		}
+	}
+
+	private void SendSticker() {
+		if (messages.Count > 0) {
+			message last = (message)messages [0];
+			sendMessage (last);
 		}
 	}
 
