@@ -69,7 +69,9 @@ public class Wristwatch : MonoBehaviour
 		InteractionBox interactionBox = frame.InteractionBox;
 		Hand hand = frame.Hands.Leftmost;
 		if (!hand.IsValid) return null;
-		Vector wristPosition = interactionBox.NormalizePoint(hand.Arm.WristPosition);
+        Vector wristPosition =
+            (interactionBox.NormalizePoint(hand.Arm.WristPosition, false)
+			+ new Vector(0.5f, 0f, 0.5f)) * 100.0f;
 		return new Vector3(wristPosition.x, wristPosition.y, wristPosition.z);
 	}
 }
