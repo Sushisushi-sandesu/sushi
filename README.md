@@ -1,6 +1,6 @@
 # Sushi :sushi: [![Stories in Ready](https://badge.waffle.io/Sushisushi-sandesu/sushi.png?label=ready&title=Ready)](https://waffle.io/Sushisushi-sandesu/sushi)
 
-:snowman: :star2: :tada: :christmas_tree: :christmas_tree: :christmas_tree: :tada: :star2: :snowman:
+:bamboo: :bamboo: :sushi: :bamboo: :bamboo:
 
 ## Usage
 
