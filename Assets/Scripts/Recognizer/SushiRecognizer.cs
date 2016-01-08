@@ -62,7 +62,7 @@ namespace Recognizer
 			Vector pinkyDirection =
 				FindFingerByType(fingers, Finger.FingerType.TYPE_PINKY).Direction;
 
-			float threshold = 0.6F;
+			float threshold = 0.8F;
 
 			return indexDirection.Dot(ringDirection) < threshold &&
 				   indexDirection.Dot(pinkyDirection) < threshold &&
