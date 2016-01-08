@@ -16,8 +16,8 @@ public class MainMenu : MonoBehaviour {
 	TcpListener list;
 	IPAddress localAddr = IPAddress.Parse("127.0.0.1");
 	string remoteAddr = "127.0.0.1";
-	int port2 = 5000;
-	int port1 = 5005;
+	int port1 = 5000;
+	int port2 = 5005;
 	
 	struct message {
 		public int gazou;
@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour {
 	bool spaceEnable = true;
 	bool aEnable = true;
 	bool receive = false;
-	Vector3[] positions = { new Vector3(16.5f,0f,0f), new Vector3(8.5f,0f,0f), new Vector3(0.5f,0f,0f), new Vector3(-7.5f,0f,0f)};
+	Vector3[] positions = { new Vector3(0f,20.5f,0f), new Vector3(0f,10.5f,0f), new Vector3(0f,0.5f,0f), new Vector3(0f,-9.5f,0f)};
 
 	string selectGazou (int tmp) {
 		switch (tmp) {
@@ -77,7 +77,7 @@ public class MainMenu : MonoBehaviour {
 		}
 	}
 	void moveImages(){
-		if (pictures[0].transform.localPosition.x < 16) {
+		if (pictures[0].transform.localPosition.y < 20) {
 			for(int i=0;i<4;i++)
 				pictures[i].transform.localPosition = Vector3.Lerp(pictures[i].transform.localPosition, positions[i], 0.1f);
 			return;
