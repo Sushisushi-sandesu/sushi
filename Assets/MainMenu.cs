@@ -10,14 +10,14 @@ using System.Threading;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
-	public UnityEngine.UI.Image[] pictures;
-
+	public UnityEngine.UI.Image[] picturesR;
+	public UnityEngine.UI.Image[] picturesL;
 
 	TcpListener list;
-	IPAddress localAddr = IPAddress.Parse("127.0.0.1");
-	string remoteAddr = "127.0.0.1";
+	IPAddress localAddr = IPAddress.Parse("157.82.5.153");
+	string remoteAddr = "157.82.7.85";
 	int port1 = 5000;
-	int port2 = 5005;
+	int port2 = 5000;
 	
 	struct message {
 		public int gazou;
@@ -57,8 +57,10 @@ public class MainMenu : MonoBehaviour {
 		list.Start();
 		Thread listener = new Thread(receiveMessage);
 		listener.Start();
-		for (int i=0; i<4; i++)
-			pictures [i].enabled = false;
+		for (int i=0; i<4; i++) {
+			picturesR [i].enabled = false;
+			picturesL [i].enabled = false;
+		}
 	}
 	void disableSpace(){
 		Thread.Sleep (200);
@@ -72,23 +74,35 @@ public class MainMenu : MonoBehaviour {
 	void showImages () {
 		if(messages.Count > 0 && messages.Count <= 4){
 			for(int i=0;i<messages.Count;i++){
-				pictures[i].sprite = Resources.Load <Sprite>(selectGazou(((message)messages[i]).gazou));
-				pictures[i].enabled = linemode;}
+				picturesR[i].sprite = Resources.Load <Sprite>(selectGazou(((message)messages[i]).gazou));
+				picturesR[i].enabled = linemode;
+				picturesL[i].sprite = Resources.Load <Sprite>(selectGazou(((message)messages[i]).gazou));
+				picturesL[i].enabled = linemode;
+			}
 		}
 	}
 	void moveImages(){
-		if (pictures[0].transform.localPosition.y < 20) {
-			for(int i=0;i<4;i++)
-				pictures[i].transform.localPosition = Vector3.Lerp(pictures[i].transform.localPosition, positions[i], 0.1f);
+		if (picturesR[0].transform.localPosition.y < 20) {
+			for(int i=0;i<4;i++){
+				picturesR[i].transform.localPosition = Vector3.Lerp(picturesR[i].transform.localPosition, positions[i], 0.1f);
+				picturesL[i].transform.localPosition = Vector3.Lerp(picturesL[i].transform.localPosition, positions[i], 0.1f);
+			}
 			return;
 		}
 		messages.RemoveAt(0);
-		UnityEngine.UI.Image first = pictures[0];
-		Array.Copy(pictures, 1, pictures, 0, pictures.Length - 1);
-		pictures[pictures.Length - 1] = first;
-		pictures[3].transform.localPosition = new Vector3(-16f,0f,0f);
-		pictures[3].sprite = Resources.Load <Sprite>(selectGazou(((message)messages[3]).gazou));
-
+		UnityEngine.UI.Image firstR = picturesR[0];
+		UnityEngine.UI.Image firstL = picturesL[0];
+		Array.Copy(picturesR, 1, picturesR, 0, picturesR.Length - 1);
+		Array.Copy(picturesL, 1, picturesL, 0, picturesL.Length - 1);
+		picturesR[picturesR.Length - 1] = firstR;
+		picturesL[picturesL.Length - 1] = firstL;
+		
+		picturesR[3].transform.localPosition = new Vector3(-16f,0f,0f);
+		picturesL[3].transform.localPosition = new Vector3(-16f,0f,0f);
+		if (messages.Count >= 4) {
+			picturesR [3].sprite = Resources.Load <Sprite> (selectGazou (((message)messages [3]).gazou));
+			picturesL [3].sprite = Resources.Load <Sprite> (selectGazou (((message)messages [3]).gazou));
+		}
 	}
 
 	void FixedUpdate (){
